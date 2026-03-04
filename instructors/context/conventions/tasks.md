@@ -118,7 +118,7 @@ Title: `[Task] <Task title>`
 ### 1.1. Key rules for task documents
 
 - **Time, Purpose, Context, Diagram, Table of contents** use `<h4>` HTML tags so they don't appear in the document's auto-generated ToC.
-- **Diagram** is optional. Include it when a sequence diagram helps students understand the overall task flow — who does what, in what order, across which environments — before they start the steps. Use a `mermaid` fenced code block with `sequenceDiagram`. Place it between Context and Table of contents. Use Mermaid for sequence/flow diagrams (actions across actors and environments, e.g., Developer → Local → VM → GitHub). Use `.drawio.svg` (see [§4.13](./common.md#413-diagrams)) for architecture or structural diagrams that need to be editable and reused across files.
+- **Diagram** is optional. Include it when a sequence diagram helps students understand the overall task flow — who does what, in what order, across which environments — before they start the steps. Use a `mermaid` fenced code block with `sequenceDiagram`. Place it between Context and Table of contents. Use Mermaid for sequence/flow diagrams (actions across actors and environments, e.g., Developer → Local → VM → GitHub). Use `.drawio.svg` (see [Diagrams](./common.md#413-diagrams)) for architecture or structural diagrams that need to be editable and reused across files.
 - **Top-level sections are numbered:** `## 1. Steps` and `## 2. Acceptance criteria`. Steps are numbered as `### 1.1.`, `### 1.2.`, etc. This matches the pattern used in `setup.md` and makes anchor links unambiguous.
 - When a `###` step covers multiple distinct sub-goals, split it into `####` sub-sections with a deeper number (`#### 1.3.1.`, `#### 1.3.2.`, etc.) and a descriptive title for each. Reflect the hierarchy in the ToC with indented entries. Add an inline mini-ToC (a bullet list of links to the sub-sections) right after the `###` heading so readers see the structure without scrolling back to the document-level ToC. Use a flat numbered list only when all actions serve a single, unified goal within the same sub-section.
 - **Step 1.1** ("Follow the Git workflow") is present in tasks that require a branch + PR. Omit for tasks that don't produce commits (e.g., "Run the web server").
@@ -213,7 +213,7 @@ This prevents overlap and ensures each task has a unique learning objective.
 
 - Provide explicit step-by-step instructions in the task document. Each numbered step should be a single concrete action — "Open the file", "Click `Execute`", "Run in the `VS Code Terminal`".
 - Link to wiki sections for reusable tool operations (e.g., how to run a command in the terminal, how to open a file). This keeps task steps focused on the domain while letting beginners follow tool-specific guides.
-- When a step repeats a process from an earlier task, reference the earlier task step instead of repeating the full instructions (see [4.12. Cross-task references](#412-cross-task-references)).
+- When a step repeats a process from an earlier task, reference the earlier task step instead of repeating the full instructions (see [Cross-task references](#412-cross-task-references)).
 
 ### 4.4. Provide fallback methods
 
@@ -375,7 +375,7 @@ Every non-trivial step should include a checkpoint — a quick way for students 
 
 Checkpoints can take different forms:
 
-- **Expected output:** Show the terminal output the student should see (see [4.9 Expected output](#49-expected-output)).
+- **Expected output:** Show the terminal output the student should see (see [Expected output](#49-expected-output)).
 - **Smoke test:** A quick command or action that confirms the change worked (e.g., "Refresh the page and verify the new endpoint appears").
 - **Visual confirmation:** A screenshot or description of what the UI should look like after the step.
 - **State check:** A command that shows the current state (e.g., "Run `git status` and verify you see the new file").
@@ -488,11 +488,15 @@ For each problem found, record: the dimension, the line number(s) or section, a 
 
 ### 5.1. D1. Learning objective clarity
 
+See [Every task teaches something](#42-every-task-teaches-something).
+
 - Does the **Purpose** state a concrete, single learning outcome (not a vague "learn about X")?
 - Does the **Context** explain *why* this task matters to a working engineer?
 - Does the task content actually deliver on the stated Purpose?
 
 ### 5.2. D2. Step-by-step completeness
+
+See [Step-by-step instructions](#43-step-by-step-instructions).
 
 - Is every action a single, concrete instruction a beginner can execute?
 - Are there compound instructions hiding multiple actions in one step? (e.g., "Open the file and change the value and save")
@@ -501,11 +505,15 @@ For each problem found, record: the dimension, the line number(s) or section, a 
 
 ### 5.3. D3. Student navigation
 
+See [Localize instructions](#45-localize-instructions) and [Cross-task references](#412-cross-task-references).
+
 - Can a student follow the task linearly without jumping between files?
 - When the task references another file or wiki section, is the link present and the referenced section relevant?
 - Is the Table of Contents accurate and complete relative to the actual headings?
 
 ### 5.4. D4. Checkpoints and feedback loops
+
+See [Step checkpoints](#418-step-checkpoints) and [Recovery guidance](#419-recovery-guidance).
 
 - Does every non-trivial step include a checkpoint (expected output, smoke test, visual confirmation, state check)?
 - Are checkpoints indented under the action step they verify, not numbered as separate steps?
@@ -513,11 +521,15 @@ For each problem found, record: the dimension, the line number(s) or section, a 
 
 ### 5.5. D5. Acceptance criteria alignment
 
+See [Acceptance criteria](#47-acceptance-criteria).
+
 - Is there a criterion for every deliverable produced by the task?
 - Is there a criterion not backed by any step in the task?
 - Are all criteria concrete and binary (pass/fail), not subjective ("looks correct")?
 
 ### 5.6. D6. Difficulty and progression
+
+See [Progressive complexity](#41-progressive-complexity).
 
 - Is the task's complexity appropriate for its position in the task sequence (setup → observe → debug → implement → deploy)?
 - Does the task jump to implementation without first building the student's mental model?
@@ -525,16 +537,22 @@ For each problem found, record: the dimension, the line number(s) or section, a 
 
 ### 5.7. D7. Practical usability
 
+See [Provide fallback methods](#44-provide-fallback-methods), [Hints and solutions](#48-hints-and-solutions), and [Step checkpoints](#418-step-checkpoints).
+
 - Would a student on a fresh setup be able to complete the task without TA help beyond documented troubleshooting?
 - Are there steps that could silently fail (no output, no checkpoint) leaving the student unaware of a problem?
 - Are hints or collapsible solutions provided for debugging/problem-solving steps where a student is expected to search for the answer?
 
 ### 5.8. D8. LLM-independence
 
+See [LLM-independence](#416-llm-independence).
+
 - Is the task completable without an LLM? If it requires AI use, is that stated explicitly?
 - Are placeholders, examples, and step-by-step guidance sufficient for a student who doesn't use AI assistance?
 
 ### 5.9. D9. Git workflow coherence
+
+See [Git workflow integration](#46-git-workflow-integration) and [Three kinds of task endings](#411-three-kinds-of-task-endings).
 
 - If the task produces code changes: does it start with "Follow the `Git workflow`", include "Create an issue", and end with "Finish the task" (PR + review)?
 - If the task does not produce code: is the ending appropriate (issue comment with evidence, or committed deliverable file)?
@@ -542,19 +560,25 @@ For each problem found, record: the dimension, the line number(s) or section, a 
 
 ### 5.10. D10. Conceptual gaps and misconceptions
 
+See [Notes explain "why"](#410-notes-explain-why).
+
 - Does the task ask students to do something without explaining why (missing `> [!NOTE]` where the reasoning isn't obvious)?
 - Could any step lead a student to form a wrong mental model (e.g., always deleting and recreating containers instead of understanding state)?
 - Does the task introduce a concept without any reference to learn more (wiki link, note, or pointer)?
 
 ### 5.11. D11. Controlled AI steps
 
+See [Controlled task environment](#420-controlled-task-environment).
+
 When a task includes AI-assisted steps:
 
-- Is the prompt exact or templated with `<placeholders>`? (Not "ask AI to help you" but "use this prompt:")
+- Is the prompt exact or templated with `<placeholders>`?
 - Is there a checkpoint specifying what correct AI output looks like or how to verify it?
-- If AI output is variable, is there a concrete acceptance criterion the student must satisfy regardless of what the AI produced?
+- If AI output is variable, is there a concrete acceptance criterion the student must satisfy?
 
 ### 5.12. D12. Autochecker verifiability
+
+See [Autochecker-verifiable outcomes](#421-autochecker-verifiable-outcomes).
 
 - Does every acceptance criterion map to a condition the autochecker can verify (repository state, VM state, or file content)?
 - Are there open-ended deliverables (free-text paragraphs, vague "describe X") that cannot be checked automatically?
